@@ -1,0 +1,141 @@
+aid: invitae
+name: Invitae
+review:
+  question: Does Invitae expose a documented public developer API, FHIR CapabilityStatement, or downloadable OpenAPI?
+  answer: false
+  date: '2026-07-24'
+  reviewer: API Evangelist
+  homeMarket: United States
+findings:
+  summary: |
+    Invitae (now Labcorp Invitae, after Labcorp acquired select Invitae assets in
+    2024) is a United States medical-genetics company. It does NOT publish a
+    self-serve public developer API. Candidate developer/API hosts were probed and
+    none resolve or serve a spec: developer.invitae.com and docs.invitae.com and
+    fhir.invitae.com do not resolve (connection failure), api.invitae.com returns
+    404 at the root and for /metadata, /openapi.json, and
+    /.well-known/smart-configuration, and www.invitae.com/developers,
+    www.invitae.com/api, and www.invitae.com/interoperability all return 404. No
+    FHIR CapabilityStatement (metadata) and no SMART-on-FHIR .well-known
+    configuration were served. No downloadable OpenAPI/Swagger was found. The
+    company's public GitHub organization (github.com/invitae, ~46 public repos) is
+    genuine but holds bioinformatics tooling (hgvs, bioutils, UTA, SpliceAI,
+    VarDictJava, needlestack), not API specifications or SDKs.
+    Integration is enterprise and partner-gated: genetic test orders and results
+    are delivered into the EHR through Epic-certified interfaces and Epic Aura
+    (Orders and Results Anywhere Network) and traditional HL7 order/result feeds,
+    coordinated by a dedicated EHR integration team, rather than through a
+    documented public FHIR or REST API. This is an honest gated-integration result,
+    not a fabricated surface.
+  developerPortal:
+    url: ""
+    confirmed: false
+    note: No first-party developer portal exists. Provider-facing surface is a clinical ordering portal at https://www.invitae.com/us/providers (HTTP 200), not a developer/API portal.
+  fhirCapabilityStatement:
+    present: false
+    version: null
+    resources: []
+    note: No <base>/metadata CapabilityStatement and no /.well-known/smart-configuration served on any probed host.
+  downloadableSpecs:
+    count: 0
+    provenance: []
+    note: No OpenAPI/Swagger or FHIR metadata JSON harvested; nothing served on api.invitae.com or the docs/developer hosts (which do not resolve).
+  authModel:
+    scheme: none-public
+    note: No public auth surface. No SMART-on-FHIR, OAuth2 client-credentials, API key, or mTLS scheme is documented publicly. Integration credentials are provisioned through partner/EHR-integration engagements.
+    smartOnFhirScopes: []
+  standardsConformance:
+    usCore: false
+    ukCore: false
+    auCore: false
+    daVinci: false
+    carin: false
+    note: No published implementation-guide conformance. Interoperability is via Epic Aura / HL7 order-result interfaces arranged per customer.
+  access:
+    model: gated
+    selfServe: false
+    note: Partner/enterprise integration engagement required; no public sandbox or self-serve API signup.
+  transports:
+    - protocol: EHR Integration (Epic Aura / HL7)
+      scheme: partner-gated
+      documented: false
+      note: Orders and results exchanged with EHRs via Epic-certified interfaces, Epic Aura, and HL7 feeds. Not a publicly documented API transport.
+    - protocol: REST
+      scheme: https
+      documented: false
+      note: api.invitae.com resolves but returns 404 at the root and for all probed spec paths; no public REST API is documented.
+    - protocol: FHIR
+      scheme: https
+      documented: false
+      note: No FHIR base, CapabilityStatement, or SMART configuration is served on any probed host.
+probes:
+  - url: https://www.invitae.com/
+    status: 200
+    note: Corporate site (Labcorp Invitae).
+  - url: https://www.invitae.com/us/providers
+    status: 200
+    note: Clinical provider ordering portal; no API/developer content.
+  - url: https://developer.invitae.com/
+    status: 000
+    note: Host does not resolve.
+  - url: https://docs.invitae.com/
+    status: 000
+    note: Host does not resolve.
+  - url: https://fhir.invitae.com/
+    status: 000
+    note: Host does not resolve.
+  - url: https://api.invitae.com/
+    status: 404
+    note: Host resolves but serves 404 at root.
+  - url: https://api.invitae.com/metadata
+    status: 404
+    note: No FHIR CapabilityStatement.
+  - url: https://api.invitae.com/openapi.json
+    status: 404
+    note: No OpenAPI served.
+  - url: https://api.invitae.com/.well-known/smart-configuration
+    status: 404
+    note: No SMART-on-FHIR configuration.
+  - url: https://www.invitae.com/developers
+    status: 404
+  - url: https://www.invitae.com/api
+    status: 404
+  - url: https://www.invitae.com/interoperability
+    status: 404
+  - url: https://blog.invitae.com/
+    status: 200
+  - url: https://github.com/invitae
+    status: 200
+    note: Genuine org, ~46 public repos, bioinformatics tooling only (no API specs/SDKs).
+  - url: https://www.invitae.com/privacy
+    status: 200
+  - url: https://www.invitae.com/terms
+    status: 200
+  - url: https://status.invitae.com/
+    status: 000
+    note: No status page.
+  - url: https://support.invitae.com/
+    status: 000
+    note: No support subdomain.
+sources:
+  - url: https://www.invitae.com/us/providers
+    type: Website
+    note: Provider offering across oncology, women's health, cardiology, neurology, pediatrics, rare disease; ordering portal, genetic counseling, Gia assistant. No API/FHIR/developer mention.
+  - url: https://www.genomeweb.com/molecular-diagnostics/invitae-epic-sign-deal-integrate-genetic-test-results-emr-system
+    type: Reference
+    note: Invitae-Epic partnership to integrate genetic test results into the EMR (Epic Aura).
+  - url: https://github.com/invitae
+    type: GitHubOrganization
+    note: Bioinformatics tooling; no public API specifications or SDKs.
+actions:
+  apisYmlUpdated: true
+  specsHarvested: 0
+  reason: |
+    No public developer portal, FHIR CapabilityStatement, SMART configuration, or
+    downloadable OpenAPI exists to harvest. Bootstrap captures honest identity plus
+    the gated Epic-Aura/HL7 EHR-integration posture in the United States home
+    market. apis[] is empty because no publicly documented API surface exists;
+    nothing was fabricated.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

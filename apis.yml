@@ -1,0 +1,50 @@
+aid: invitae
+url: https://raw.githubusercontent.com/api-evangelist/invitae/refs/heads/main/apis.yml
+name: Invitae
+kind: company
+description: >-
+  Invitae (now Labcorp Invitae, following Labcorp's 2024 acquisition of select Invitae
+  assets) is a United States medical genetics and healthcare-technology company that
+  provides clinical-grade hereditary and somatic genetic testing across oncology,
+  women's health, cardiology, neurology, pediatrics, and rare disease. It offers
+  providers an online ordering portal, licensed genetic counseling, and the Gia digital
+  assistant, and returns results into clinician workflows. Invitae's integration posture
+  is enterprise and partner-gated rather than a self-serve public developer API: genetic
+  test orders and results reach the electronic health record through Epic-certified
+  interfaces and Epic Aura (Orders and Results Anywhere Network) and traditional HL7
+  order/result feeds delivered by a dedicated EHR integration team. As of this review no
+  public developer portal, FHIR CapabilityStatement, SMART-on-FHIR configuration, or
+  downloadable OpenAPI is published; programmatic access is arranged through a
+  partnership/integration engagement in its United States home market.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Healthcare
+- United States
+- Genomics
+- Genetic Testing
+- Precision Medicine
+- Life Sciences
+- EHR
+- Interoperability
+- HL7
+- Diagnostics
+created: '2026-07-24'
+modified: '2026-07-24'
+specificationVersion: '0.19'
+apis: []
+common:
+- type: Website
+  url: https://www.invitae.com/
+- type: Portal
+  url: https://www.invitae.com/us/providers
+- type: Blog
+  url: https://blog.invitae.com/
+- type: GitHubOrganization
+  url: https://github.com/invitae
+- type: PrivacyPolicy
+  url: https://www.invitae.com/privacy
+- type: TermsOfService
+  url: https://www.invitae.com/terms
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
