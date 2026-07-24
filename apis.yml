@@ -33,6 +33,10 @@ modified: '2026-07-24'
 specificationVersion: '0.19'
 apis: []
 common:
+- type: DomainSecurity
+  url: security/invitae-domain-security.yml
+- type: LLMsTxt
+  url: llms/invitae-llms.txt
 - type: Website
   url: https://www.invitae.com/
 - type: Portal

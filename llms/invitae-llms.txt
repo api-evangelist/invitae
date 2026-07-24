@@ -1,0 +1,22 @@
+# Invitae (Labcorp Invitae)
+
+> Invitae (now Labcorp Invitae, following Labcorp's 2024 acquisition of select Invitae assets) is a United States medical-genetics and healthcare-technology company providing clinical-grade hereditary and somatic genetic testing across oncology, women's health, cardiology, neurology, pediatrics, and rare disease. Integration is enterprise and partner-gated rather than a self-serve public developer API: genetic test orders and results reach the electronic health record through Epic-certified interfaces, Epic Aura (Orders and Results Anywhere Network), and traditional HL7 order/result feeds coordinated by a dedicated EHR integration team. As of this review no public developer portal, FHIR CapabilityStatement, SMART-on-FHIR configuration, or downloadable OpenAPI is published.
+
+## API surface
+
+No public, self-serve developer API. Programmatic integration (orders and results) is arranged through a partnership/integration engagement and delivered via Epic Aura and HL7 feeds. No OpenAPI, FHIR CapabilityStatement, or SMART-on-FHIR configuration is served on any probed host (developer/docs/fhir subdomains do not resolve; api.invitae.com returns 404 at the root and for /metadata, /openapi.json, and /.well-known/smart-configuration).
+
+## Provider and clinical surfaces
+
+- [Corporate site](https://www.invitae.com/): Company overview, tests, and services.
+- [Provider ordering portal](https://www.invitae.com/us/providers): Clinician-facing test ordering, genetic counseling, and the Gia digital assistant (not a developer/API portal).
+- [Blog](https://blog.invitae.com/): Company and clinical genetics content.
+
+## Open-source (GitHub)
+
+- [github.com/invitae](https://github.com/invitae): Genuine public organization (~46 repos) with bioinformatics tooling (hgvs, bioutils, UTA, SpliceAI, VarDictJava, needlestack). Not API specifications or SDKs.
+
+## Legal
+
+- [Privacy Policy](https://www.invitae.com/privacy)
+- [Terms of Service](https://www.invitae.com/terms)
