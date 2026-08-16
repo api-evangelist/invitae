@@ -3,19 +3,21 @@ url: https://raw.githubusercontent.com/api-evangelist/invitae/refs/heads/main/ap
 name: Invitae
 kind: company
 description: >-
-  Invitae (now Labcorp Invitae, following Labcorp's 2024 acquisition of select Invitae
-  assets) is a United States medical genetics and healthcare-technology company that
-  provides clinical-grade hereditary and somatic genetic testing across oncology,
-  women's health, cardiology, neurology, pediatrics, and rare disease. It offers
-  providers an online ordering portal, licensed genetic counseling, and the Gia digital
-  assistant, and returns results into clinician workflows. Invitae's integration posture
-  is enterprise and partner-gated rather than a self-serve public developer API: genetic
-  test orders and results reach the electronic health record through Epic-certified
-  interfaces and Epic Aura (Orders and Results Anywhere Network) and traditional HL7
-  order/result feeds delivered by a dedicated EHR integration team. As of this review no
-  public developer portal, FHIR CapabilityStatement, SMART-on-FHIR configuration, or
-  downloadable OpenAPI is published; programmatic access is arranged through a
-  partnership/integration engagement in its United States home market.
+  Invitae — operated as Labcorp Invitae / Labcorp Genetics since Labcorp acquired select
+  Invitae assets out of the company's 2024 Chapter 11 — is a United States medical
+  genetics and healthcare-technology company providing clinical-grade hereditary and
+  somatic genetic testing across oncology, women's health, cardiology, neurology,
+  pediatrics, and rare disease. Its laboratory is CLIA-certified and CAP-accredited, and
+  it publishes a HIPAA Notice of Privacy Practices and state laboratory licensure.
+  Clinicians order tests and receive results through a web portal with licensed genetic
+  counseling and the Gia digital assistant. Invitae publishes no API: contract discovery
+  across every Invitae host found no developer portal, no OpenAPI, no GraphQL endpoint,
+  no MCP server, no A2A agent card, no FHIR CapabilityStatement, no SMART-on-FHIR
+  configuration, no webhooks, no client SDK and no /.well-known document. api.invitae.com
+  resolves but returns a blanket nginx 403 for every path, and the developer, docs and
+  fhir subdomains do not resolve at all. The company's public GitHub organization is
+  genuine but consists of forks of upstream bioinformatics projects, not first-party
+  specifications or libraries.
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Healthcare
@@ -24,31 +26,73 @@ tags:
 - Genetic Testing
 - Precision Medicine
 - Life Sciences
-- EHR
-- Interoperability
-- HL7
 - Diagnostics
+- Clinical Laboratory
+- Oncology
+- Rare Disease
 created: '2026-07-24'
-modified: '2026-07-24'
+modified: '2026-08-15'
 specificationVersion: '0.19'
 apis: []
 common:
 - type: DomainSecurity
   url: security/invitae-domain-security.yml
+- type: Packages
+  url: packages/invitae-packages.yml
+- type: Conformance
+  url: conformance/invitae-conformance.yml
+- type: Compliance
+  url: https://www.invitae.com/us/provider-faqs/tech-and-quality
+  name: CLIA certified, CAP accredited clinical laboratory
+- type: Lifecycle
+  url: lifecycle/invitae-lifecycle.yml
+- type: Plans
+  url: plans/invitae-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/invitae-rate-limits.yml
 - type: LLMsTxt
   url: llms/invitae-llms.txt
 - type: Website
   url: https://www.invitae.com/
-- type: Portal
+- type: Products
   url: https://www.invitae.com/us/providers
+  name: Clinician test-ordering portal (not a developer portal)
+- type: Support
+  url: https://www.invitae.com/us/provider-faqs
 - type: Blog
   url: https://blog.invitae.com/
+- type: BlogRSS
+  url: https://blog.invitae.com/feed
 - type: GitHubOrganization
   url: https://github.com/invitae
 - type: PrivacyPolicy
-  url: https://www.invitae.com/privacy
+  url: https://www.invitae.com/us/privacy
 - type: TermsOfService
-  url: https://www.invitae.com/terms
+  url: https://www.invitae.com/us/terms-of-use
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-15'
+  status: minimal
+  artifacts_added: 6
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Invitae ships genetic testing as a clinician-ordered laboratory service with no
+    programmatic product of any kind — its one API-shaped host, api.invitae.com, is a
+    private backend that answers a blanket nginx 403 on every path including the root,
+    and the live site markets no API, no partner integration programme and no "request
+    API access" form to gate one behind.
+  evidence:
+  - url: https://api.invitae.com/openapi.json
+    status: 403
+  - url: https://www.invitae.com/developers
+    status: 404
+  - url: https://www.invitae.com/llms.txt
+    status: 404
+  - url: https://www.invitae.com/.well-known/agent-card.json
+    status: 404
+  checked: '2026-08-15'
