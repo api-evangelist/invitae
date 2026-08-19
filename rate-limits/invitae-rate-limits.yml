@@ -1,0 +1,27 @@
+generated: '2026-08-15'
+method: probed
+source: >-
+  live probes of api.invitae.com (all paths 403) and a sitemap-wide search of
+  www.invitae.com for developer documentation
+note: >-
+  Honest zero. Invitae publishes no API documentation, so no rate limits, no quota
+  windows and no rate-limit response headers are documented anywhere. The only host that
+  looks like an API — api.invitae.com — returns a blanket nginx 403 for every path, so no
+  runtime headers could be observed either: the 403 response carries only
+  strict-transport-security, date, content-type and content-length. Nothing of the
+  X-RateLimit-*, RateLimit-* or Retry-After family was present.
+limit_count: 0
+limits: []
+headers: []
+exhaustion_status: null
+probes:
+- url: https://api.invitae.com/
+  status: 403
+  note: >-
+    Response headers observed - date, content-type, content-length,
+    strict-transport-security. No rate-limit headers.
+- url: https://www.invitae.com/developers
+  status: 404
+- url: https://developer.invitae.com/
+  status: 000
+  note: DNS does not resolve.

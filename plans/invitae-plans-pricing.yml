@@ -1,0 +1,22 @@
+generated: '2026-08-15'
+method: searched
+source: https://www.invitae.com/us/providers/billing
+note: >-
+  Invitae publishes no API and therefore no API plans, tiers, quotas or overage pricing.
+  The only commercial page on the site is provider billing, which describes patient
+  test-access programs and directs health-plan representatives to a Managed Care contact
+  form — it lists no prices at all (a full text extraction of the page found zero currency
+  amounts). www.invitae.com/pricing returns 404. There is no self-serve purchase path and
+  no published price list for either the tests or any programmatic access.
+plan_count: 0
+currency: null
+plans: []
+probes:
+- url: https://www.invitae.com/us/providers/billing
+  status: 200
+  note: No prices published; routes health plans to a Managed Care contact form.
+- url: https://www.invitae.com/pricing
+  status: 404
+- url: https://www.invitae.com/us/providers
+  status: 200
+  note: Clinical ordering surface; no commercial API tiers.

@@ -1,0 +1,97 @@
+generated: '2026-08-15'
+method: probed
+source: live HTTPS probes of every Invitae host named in apis.yml plus the app/CDN host
+note: >-
+  Recorded absence. Every /.well-known/ path was probed on all four reachable Invitae
+  hosts and NOT ONE returned a document. www.invitae.com and casa.invitae.com answer
+  404 (nginx, plain text 404 body — not an SPA shell), api.invitae.com answers a
+  blanket nginx 403 for every path including the root, and blog.invitae.com (a
+  Medium-hosted publication) answers 403 to non-browser clients. No WellKnown or
+  SecurityTxt pointer is emitted in apis.yml because no probe returned a 200 carrying
+  a real document.
+hosts:
+- host: https://www.invitae.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/smart-configuration
+    status: 404
+  - path: /security.txt
+    status: 404
+- host: https://api.invitae.com
+  note: >-
+    Host resolves and terminates TLS but nginx returns 403 Forbidden for every path,
+    including the root. Not a bot challenge — a blanket deny with a 548-byte static
+    nginx error body. Treated as a private backend, not a published API surface.
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/openid-configuration
+    status: 403
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+  - path: /.well-known/oauth-protected-resource
+    status: 403
+  - path: /.well-known/api-catalog
+    status: 403
+  - path: /.well-known/ai-plugin.json
+    status: 403
+  - path: /.well-known/agent-card.json
+    status: 403
+  - path: /.well-known/agent.json
+    status: 403
+  - path: /.well-known/smart-configuration
+    status: 403
+- host: https://casa.invitae.com
+  note: >-
+    Application/CDN host referenced by www.invitae.com for fonts, icons and Next.js
+    static assets. Its root serves the stock "Welcome to nginx!" page.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://blog.invitae.com
+  note: >-
+    Medium-hosted publication ("Health decoded"). Returns 403 to non-browser clients on
+    HTML paths; the RSS feed at /feed returns 200.
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/agent-card.json
+    status: 403
+  - path: /.well-known/agent.json
+    status: 403
+summary:
+  hosts_probed: 4
+  paths_probed: 37
+  documents_found: 0
+  security_txt: false
+  api_catalog: false
+  agent_card: false

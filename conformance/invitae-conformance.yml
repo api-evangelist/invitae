@@ -1,0 +1,94 @@
+generated: '2026-08-15'
+method: searched
+source: >-
+  https://www.invitae.com/us/provider-faqs/tech-and-quality,
+  https://www.invitae.com/privacy/hipaa-notice-of-privacy-practices,
+  https://www.invitae.com/us/licensing
+note: >-
+  Invitae publishes a clinical-laboratory regulatory posture (CAP accreditation, CLIA
+  certification, a HIPAA Notice of Privacy Practices, and state laboratory licensure) but
+  publishes NO API-side conformance of any kind. There is no OpenAPI, no FHIR
+  CapabilityStatement, no SMART-on-FHIR configuration, no OAuth/OIDC discovery document
+  and no error/pagination convention to assert against — every API-side standard below is
+  recorded false on a probed absence, not on a negative claim by the company.
+standards:
+- id: clia
+  name: Clinical Laboratory Improvement Amendments certification
+  conforms: true
+  evidence: >-
+    "Invitae's clinical diagnostic laboratory, which is accredited by the College of
+    American Pathologists (CAP) and Clinical Laboratory Improvement Amendments
+    (CLIA)-certified" — https://www.invitae.com/us/provider-faqs/tech-and-quality
+- id: cap-accreditation
+  name: College of American Pathologists laboratory accreditation
+  conforms: true
+  evidence: >-
+    Same statement on the provider technology & quality FAQ —
+    https://www.invitae.com/us/provider-faqs/tech-and-quality
+- id: hipaa
+  name: HIPAA Privacy Rule
+  conforms: true
+  evidence: >-
+    Published HIPAA Notice of Privacy Practices (HTTP 200) —
+    https://www.invitae.com/privacy/hipaa-notice-of-privacy-practices
+- id: state-laboratory-licensure
+  name: US state clinical laboratory licensure
+  conforms: true
+  evidence: >-
+    Licensing page enumerating state laboratory licenses (HTTP 200) —
+    https://www.invitae.com/us/licensing
+- id: openapi
+  conforms: false
+  evidence: >-
+    No OpenAPI/Swagger served on any Invitae host. www.invitae.com and casa.invitae.com
+    return 404 for /openapi.json, /openapi.yaml, /swagger.json and /api-docs;
+    api.invitae.com returns 403 for all of them.
+- id: fhir-r4
+  conforms: false
+  evidence: >-
+    No FHIR base or CapabilityStatement. api.invitae.com/metadata returns 403;
+    fhir.invitae.com does not resolve (DNS failure).
+- id: smart-on-fhir
+  conforms: false
+  evidence: >-
+    /.well-known/smart-configuration returns 404 on www.invitae.com and 403 on
+    api.invitae.com.
+- id: us-core
+  conforms: false
+  evidence: No implementation-guide conformance published; no FHIR surface exists to profile.
+- id: hl7-v2
+  conforms: false
+  evidence: >-
+    No HL7 v2 interface specification is published on the live site. Earlier third-party
+    reporting of Epic/HL7 order-result feeds is not restated anywhere on invitae.com as of
+    this pass, so it is not asserted here.
+- id: oauth2
+  conforms: false
+  evidence: >-
+    No /.well-known/oauth-authorization-server or /.well-known/oauth-protected-resource on
+    any host (404 on www and casa, 403 on api).
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404 on www.invitae.com and casa.invitae.com.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: No public error contract to evaluate.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on www.invitae.com and casa.invitae.com.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No versioning or deprecation policy is published.
+compliance_program:
+  published: true
+  url: https://www.invitae.com/us/provider-faqs/tech-and-quality
+  certifications:
+  - CLIA certified
+  - CAP accredited
+  - HIPAA Notice of Privacy Practices
+  - US state clinical laboratory licensure
+  scope: >-
+    Clinical laboratory and patient-privacy compliance. NOT an information-security
+    attestation program — no SOC 2, ISO 27001, HITRUST or FedRAMP report or trust center
+    is published, and probe-security-programs.py found no trust center on
+    trust.invitae.com, security.invitae.com or invitae.com/trust|/security|/compliance.

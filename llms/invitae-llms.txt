@@ -1,22 +1,44 @@
 # Invitae (Labcorp Invitae)
 
-> Invitae (now Labcorp Invitae, following Labcorp's 2024 acquisition of select Invitae assets) is a United States medical-genetics and healthcare-technology company providing clinical-grade hereditary and somatic genetic testing across oncology, women's health, cardiology, neurology, pediatrics, and rare disease. Integration is enterprise and partner-gated rather than a self-serve public developer API: genetic test orders and results reach the electronic health record through Epic-certified interfaces, Epic Aura (Orders and Results Anywhere Network), and traditional HL7 order/result feeds coordinated by a dedicated EHR integration team. As of this review no public developer portal, FHIR CapabilityStatement, SMART-on-FHIR configuration, or downloadable OpenAPI is published.
+> Invitae — operated as Labcorp Invitae / Labcorp Genetics since Labcorp acquired select Invitae assets out of the 2024 Chapter 11 — is a United States medical-genetics and healthcare-technology company providing clinical-grade hereditary and somatic genetic testing across oncology, women's health, cardiology, neurology, pediatrics and rare disease. It publishes no API. There is no developer portal, no OpenAPI, no GraphQL endpoint, no MCP server, no A2A agent card, no FHIR CapabilityStatement, no SMART-on-FHIR configuration, no webhooks and no client SDK on any Invitae host. Clinicians order tests and read results through a web portal (with the Gia digital assistant), not through a programmatic interface.
 
 ## API surface
 
-No public, self-serve developer API. Programmatic integration (orders and results) is arranged through a partnership/integration engagement and delivered via Epic Aura and HL7 feeds. No OpenAPI, FHIR CapabilityStatement, or SMART-on-FHIR configuration is served on any probed host (developer/docs/fhir subdomains do not resolve; api.invitae.com returns 404 at the root and for /metadata, /openapi.json, and /.well-known/smart-configuration).
+None published. Contract discovery was run against every Invitae host on 2026-08-15 and every probe missed:
+
+- `api.invitae.com` resolves and terminates TLS but nginx returns **403 Forbidden for every path**, including `/`, `/openapi.json`, `/openapi.yaml`, `/swagger.json`, `/v1/openapi.json`, `/api-docs`, `/docs`, `/redoc`, `/metadata`, `/graphql` and `/.well-known/*`. It is a private backend for Invitae's own applications, not a published API.
+- `developer.invitae.com`, `docs.invitae.com`, `fhir.invitae.com`, `apis.invitae.com`, `portal.invitae.com`, `status.invitae.com`, `trust.invitae.com` and `security.invitae.com` do not resolve.
+- `www.invitae.com` returns 404 for `/developers`, `/developer`, `/api`, `/apis`, `/integrations`, `/interoperability`, `/llms.txt`, `/openapi.json`, `/swagger.json`, `/api-docs`, `/pricing`, `/security`, `/trust` and `/compliance`.
+- `casa.invitae.com` (the Next.js asset/CDN host linked from the site) serves the stock nginx welcome page and 404s every spec and `.well-known` path.
+- No `/.well-known/` document was returned by any host: security.txt, openid-configuration, oauth-authorization-server, oauth-protected-resource, api-catalog, ai-plugin.json, agent-card.json, agent.json and smart-configuration all missed (37 path probes across 4 hosts, 0 documents).
+- No public rate limits, plans, changelog, status page, versioning policy or deprecation policy exist.
+
+## Packages
+
+- [@invitae/pdfjs](https://www.npmjs.com/package/@invitae/pdfjs): the only package published under an Invitae namespace on any registry — a custom build of Mozilla's PDF.js, v2.0.943, last published 2019-03-21. It is a viewer for Invitae's own report UI, not an API client. Nothing on PyPI, RubyGems or crates.io.
+
+## Open source (GitHub)
+
+- [github.com/invitae](https://github.com/invitae): a genuine organization with 46 public repositories, but every substantive repository is a **fork** of an upstream project — `hgvs`, `bioutils` and `uta` from biocommons; `SpliceAI` from Illumina; `needlestack` from IARCbioinfo; `VarDictJava` from AstraZeneca-NGS; `pangolin` from broadinstitute. No API specifications and no first-party SDKs.
 
 ## Provider and clinical surfaces
 
-- [Corporate site](https://www.invitae.com/): Company overview, tests, and services.
-- [Provider ordering portal](https://www.invitae.com/us/providers): Clinician-facing test ordering, genetic counseling, and the Gia digital assistant (not a developer/API portal).
-- [Blog](https://blog.invitae.com/): Company and clinical genetics content.
+- [Corporate site](https://www.invitae.com/): company overview, tests and services.
+- [Provider portal](https://www.invitae.com/us/providers): clinician-facing test ordering, genetic counseling and the Gia chatbot. Not a developer portal.
+- [Provider FAQs](https://www.invitae.com/us/provider-faqs): the closest thing to a support/help surface.
+- [Technology & quality FAQ](https://www.invitae.com/us/provider-faqs/tech-and-quality): sequencing methodology; states the laboratory is CAP-accredited and CLIA-certified.
+- [Sign up](https://www.invitae.com/profile/signup): patient/provider account creation.
+- [Billing](https://www.invitae.com/us/providers/billing): test-access programs and a Managed Care contact form. No published prices.
+- [Blog](https://blog.invitae.com/): "Health decoded", a Medium-hosted publication; RSS at https://blog.invitae.com/feed.
 
-## Open-source (GitHub)
+## Compliance
 
-- [github.com/invitae](https://github.com/invitae): Genuine public organization (~46 repos) with bioinformatics tooling (hgvs, bioutils, UTA, SpliceAI, VarDictJava, needlestack). Not API specifications or SDKs.
+- [HIPAA Notice of Privacy Practices](https://www.invitae.com/privacy/hipaa-notice-of-privacy-practices)
+- [State laboratory licensing](https://www.invitae.com/us/licensing)
+- CLIA certification and CAP accreditation, stated on the technology & quality FAQ. No SOC 2, ISO 27001 or trust center is published.
 
 ## Legal
 
-- [Privacy Policy](https://www.invitae.com/privacy)
-- [Terms of Service](https://www.invitae.com/terms)
+- [Privacy Policy](https://www.invitae.com/us/privacy)
+- [Terms of Use](https://www.invitae.com/us/terms-of-use)
+- [Terms of Service](https://www.invitae.com/terms-of-service)

@@ -1,0 +1,53 @@
+generated: '2026-08-15'
+method: searched
+source: >-
+  npm registry search + registry.npmjs.org metadata, PyPI, RubyGems, crates.io and the
+  github.com/invitae organization listing (GitHub REST API, 46 public repositories)
+note: >-
+  Invitae publishes NO first-party client library for any API. One package exists under
+  the company's own npm scope — @invitae/pdfjs — but it is a custom build of Mozilla's
+  PDF.js used by Invitae's own web application, not an API SDK. Every "bioinformatics"
+  repository in the github.com/invitae organization (hgvs, bioutils, uta, SpliceAI,
+  needlestack, VarDictJava, pangolin) is a FORK of an upstream project
+  (biocommons/*, Illumina/SpliceAI, IARCbioinfo/needlestack, AstraZeneca-NGS/VarDictJava,
+  broadinstitute/pangolin) — verified via the GitHub API `fork`/`parent` fields — so the
+  PyPI/Maven artifacts for those names belong to their upstream owners, not to Invitae.
+  Because there is no API client library, apis.yml carries a Packages pointer but
+  deliberately does NOT carry an SDKs pointer.
+sdk_count: 0
+package_count: 1
+packages:
+- language: javascript
+  registry: npm
+  name: '@invitae/pdfjs'
+  url: https://www.npmjs.com/package/@invitae/pdfjs
+  install: npm install @invitae/pdfjs
+  official: true
+  api_client: false
+  version: 2.0.943
+  published: '2019-03-21'
+  license: Apache-2.0
+  repository: https://github.com/invitae/pdf.js
+  description: Invitae's custom build of Mozilla's PDF.js library.
+  note: >-
+    Only version ever published; latest release is 2019-03-21, over seven years stale as
+    of this pass. A viewer build for the company's own report-rendering UI, not a client
+    for any Invitae API.
+registries_checked:
+- registry: npm
+  query: invitae
+  result: 1 package (@invitae/pdfjs)
+- registry: pypi
+  query: invitae, invitae-api, invitae-sdk, pyinvitae
+  result: 404 on all four
+- registry: rubygems
+  query: invitae
+  result: 404
+- registry: crates.io
+  query: invitae
+  result: no matching crate
+- registry: github
+  query: github.com/invitae organization repositories
+  result: >-
+    46 public repositories; every non-exercise repository is a fork of an upstream
+    project. No first-party SDK, no API specification, no published client library.

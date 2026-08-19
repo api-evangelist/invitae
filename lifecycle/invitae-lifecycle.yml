@@ -1,0 +1,53 @@
+generated: '2026-08-15'
+method: probed
+source: >-
+  live probes of status./support. subdomains and the www.invitae.com sitemap +
+  robots.txt, plus a full crawl of the about-us and providers XML sitemaps
+note: >-
+  Recorded absence. Invitae publishes no API, and correspondingly no versioning policy,
+  no deprecation policy, no SLA, no changelog and no status page. status.invitae.com does
+  not resolve. No StatusPage or Deprecation pointer is emitted in apis.yml, because
+  neither surface exists — only the Lifecycle artifact itself, which records the absence.
+versioning:
+  scheme: null
+  current: null
+  docs: null
+  note: No public API and no published versioning policy.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No deprecation or sunset policy published.
+sla:
+  url: null
+  uptime_target: null
+  note: No published API SLA. Turnaround-time commitments on the site are laboratory report
+    turnaround, not service availability.
+status_page: null
+changelog: null
+deprecated_operations: []
+corporate_lifecycle:
+  status: absorbed
+  note: >-
+    Invitae Corporation filed Chapter 11 in early 2024; Labcorp acquired select assets and
+    operates the business as Labcorp Genetics / Labcorp Invitae. invitae.com is still
+    live and separately branded, but its footer reads "© 2026 Labcorp", careers and
+    investor links now point at labcorp.com, and the former engineering site at
+    /en/engineering 308-redirects to careers.labcorp.com. This is the most likely reason
+    a developer-facing surface will not appear here.
+probes:
+- url: https://status.invitae.com/
+  status: 000
+  note: DNS does not resolve.
+- url: https://support.invitae.com/
+  status: 404
+- url: https://www.invitae.com/status
+  status: 404
+- url: https://www.invitae.com/en/engineering
+  status: 308
+  note: Redirects to https://careers.labcorp.com/global/en (HTTP 200).
+- url: https://www.invitae.com/sitemap.xml
+  status: 200
+  note: >-
+    Eight child sitemaps (about-us, individuals, physician-genes, physician-tests, press,
+    providers, sponsored-testing, video). None names a changelog, release-notes,
+    deprecation or status page.
