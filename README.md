@@ -1,4 +1,4 @@
-# Invitae (invitae)
+# Invitae
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,45 +64,97 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Invitae, now Labcorp Invitae after Labcorp's 2024 acquisition of select Invitae assets, is a United States medical genetics and healthcare-technology company providing clinical-grade hereditary and somatic genetic testing across oncology, women's health, cardiology, neurology, pediatrics, and rare disease. It offers providers an online ordering portal, licensed genetic counseling, and the Gia digital assistant.
+Invitae — operated as Labcorp Invitae / Labcorp Genetics since Labcorp acquired select Invitae assets out of the company's 2024 Chapter 11 — is a United States medical genetics and healthcare-technology company providing clinical-grade hereditary and somatic genetic testing across oncology, women's health, cardiology, neurology, pediatrics, and rare disease. Its laboratory is CLIA-certified and CAP-accredited, and it publishes a HIPAA Notice of Privacy Practices and state laboratory licensure. Clinicians order tests and receive results through a web portal with licensed genetic counseling and the Gia digital assistant. Invitae publishes no API: contract discovery across every Invitae host found no developer portal, no OpenAPI, no GraphQL endpoint, no MCP server, no A2A agent card, no FHIR CapabilityStatement, no SMART-on-FHIR configuration, no webhooks, no client SDK and no /.well-known document. api.invitae.com resolves but returns a blanket nginx 403 for every path, and the developer, docs and fhir subdomains do not resolve at all. The company's public GitHub organization is genuine but consists of forks of upstream bioinformatics projects, not first-party specifications or libraries.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/invitae/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/invitae/refs/heads/main/apis.yml)
+**Areas:** Healthcare · United States · Genomics · Genetic Testing · Precision Medicine · Life Sciences · Diagnostics · Clinical Laboratory · Oncology · Rare Disease
 
-## API Posture
+## Invitae on APIs.io
 
-Invitae publishes no API. Contract discovery run on 2026-08-15 against every Invitae host found no developer portal, no OpenAPI or Swagger, no GraphQL endpoint, no MCP server, no A2A agent card, no FHIR CapabilityStatement, no SMART-on-FHIR configuration, no webhooks, no client SDK and no `/.well-known/` document (37 path probes across four hosts, zero documents). `api.invitae.com` resolves and terminates TLS but returns a blanket nginx `403 Forbidden` for every path including the root — a private application backend, not a published API — and `developer.`, `docs.`, `fhir.`, `apis.`, `portal.` and `status.invitae.com` do not resolve. The live site markets no API, no partner integration programme and no "request API access" form. Earlier profiles of this company cited Epic Aura / HL7 order-result feeds from 2019 third-party reporting; nothing on invitae.com restates that today, so it is no longer asserted here. The public GitHub organization is genuine but every substantive repository is a fork of an upstream bioinformatics project.
+Everything profiled for Invitae is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/invitae/](https://apis.io/providers/invitae/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### Published properties
 
-- Healthcare
-- United States
-- Genomics
-- Genetic Testing
-- Precision Medicine
-- Life Sciences
-- EHR
-- Interoperability
-- HL7
-- Diagnostics
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## Timestamps
+#### Security (1)
 
-- **Created:** 2026-07-24
-- **Modified:** 2026-07-24
+Authentication, trust centre, and vulnerability disclosure.
 
-## Links
+- [Invitae Domain Security](https://apis.io/security/invitae/invitae-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Invitae Plans Pricing](https://apis.io/plans/invitae/invitae-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Invitae Rate Limits](https://apis.io/rate-limits/invitae/invitae-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.invitae.com/)
-- [Provider Portal](https://www.invitae.com/us/providers)
+- [Support](https://www.invitae.com/us/provider-faqs)
 - [Blog](https://blog.invitae.com/)
-- [GitHub Organization](https://github.com/invitae)
-- [Privacy Policy](https://www.invitae.com/privacy)
-- [Terms of Service](https://www.invitae.com/terms)
+- [Compliance](https://www.invitae.com/us/provider-faqs/tech-and-quality)
+- [Terms of service](https://www.invitae.com/us/terms-of-use)
+- [Privacy policy](https://www.invitae.com/us/privacy)
+- [GitHub](https://github.com/invitae)
 
-## Home Market
+## API Evangelist rating
 
-United States
+**Kin Score 17.0** — emerging · rubric 0.24.0 · scored 2026-10-17
 
-## Maintainers
+| Facet | Score |
+|---|---|
+| Discoverability | 55.4 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 7.1 |
+| Access clarity | 28.9 |
 
-- Kin Lane — kin@apievangelist.com
+**Agent readiness 2.5** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 23.4** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/invitae/](https://apis.io/providers/invitae/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Invitae: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/invitae/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
